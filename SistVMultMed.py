@@ -106,14 +106,22 @@ def main():
     servicio_hospitalario = sistemaV()
     # sistma=sistemaV()
     while True:
-        menu=int(input('''\nIngrese una opción: 
-                       \n1- Ingresar una mascota 
-                       \n2- Ver fecha de ingreso 
-                       \n3- Ver número de mascotas en el servicio 
-                       \n4- Ver medicamentos que se están administrando
-                       \n5- Eliminar mascota 
-                       \n6- Salir 
-                       \nUsted ingresó la opción: ''' ))
+        
+        print(f"\nActualmente hay {servicio_hospitalario.verNumeroMascotas()}/10 mascotas hospitalizadas")
+        try:
+            menu = int(input('''\nIngrese una opción: 
+1- Ingresar una mascota 
+2- Ver fecha de ingreso 
+3- Ver número de mascotas en el servicio 
+4- Ver medicamentos que se están administrando
+5- Eliminar mascota 
+6- Eliminar medicamento de una mascota
+7- Salir 
+Usted ingresó la opción: '''))
+        except ValueError:
+            print("Ingrese un número válido.")
+            continue
+
         if menu==1: # Ingresar una mascota 
             if servicio_hospitalario.verNumeroMascotas() >= 10:
                 print("No hay espacio ...") 
