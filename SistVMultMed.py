@@ -1,4 +1,5 @@
 from datetime import datetime
+import time
 
 class Medicamento:
     def __init__(self):
@@ -120,33 +121,39 @@ def main():
 Usted ingresó la opción: '''))
         except ValueError:
             print("Ingrese un número válido.")
+            print("-" * 50)
             continue
 
         if menu == 1:
             if servicio_hospitalario.verNumeroMascotas() >= 10:
                 print("No hay espacio disponible.")
+                print("-" * 50)
                 continue
 
             try:
                 historia = int(input("Ingrese la historia clínica: "))
             except ValueError:
                 print("Debe ingresar un número válido para historia clínica.")
+                print("-" * 50)
                 continue
 
             if servicio_hospitalario.verificarExiste(historia):
                 print("Ya existe una mascota con ese número de historia clínica.")
+                print("-" * 50)
                 continue
 
             nombre = input("Ingrese el nombre de la mascota: ")
             tipo = input("Ingrese el tipo de mascota (canino o felino): ").strip().lower()
             if tipo not in ["canino", "felino"]:
                 print("Tipo de mascota no válido.")
+                print("-" * 50)
                 continue
 
             try:
                 peso = float(input("Ingrese el peso: "))
             except ValueError:
                 print("Peso inválido.")
+                print("-" * 50)
                 continue
 
             fecha_str = input("Ingrese la fecha de ingreso (dd/mm/aaaa): ")
@@ -154,12 +161,14 @@ Usted ingresó la opción: '''))
                 fecha = datetime.strptime(fecha_str, "%d/%m/%Y")
             except ValueError:
                 print("Formato de fecha incorrecto. Use dd/mm/aaaa.")
+                print("-" * 50)
                 continue
 
             try:
                 nm = int(input("¿Cuántos medicamentos se van a registrar?: "))
             except ValueError:
                 print("Ingrese un número válido.")
+                print("-" * 50)
                 continue
 
             nombres_meds = set()
@@ -190,6 +199,7 @@ Usted ingresó la opción: '''))
             mascota.asignarLista_Medicamentos(lista_med)
             resultado = servicio_hospitalario.ingresarMascota(mascota)
             print(resultado)
+            print("-" * 50)
 
         elif menu==2: # Ver fecha de ingreso
                 q = int(input("Ingrese la historia clínica de la mascota: "))
@@ -199,10 +209,12 @@ Usted ingresó la opción: '''))
                  print("La fecha de ingreso de la mascota es: " + fecha)
                 else:
                  print("La historia clínica ingresada no corresponde con ninguna mascota en el sistema.")
+                 print("-" * 50)
             
         elif menu==3: # Ver número de mascotas en el servicio 
                 numero=servicio_hospitalario.verNumeroMascotas()
                 print("El número de pacientes en el sistema es: " + str(numero))
+                print("-" * 50)
 
         elif menu == 4:
             try:
@@ -217,6 +229,7 @@ Usted ingresó la opción: '''))
                     print(f"- {med.verNombre().capitalize()} (Dosis: {med.verDosis()})")
             else:
                 print("La mascota no está en el sistema.")
+                print("-" * 50)
             
         
         elif menu == 5: # Eliminar mascota
@@ -226,6 +239,7 @@ Usted ingresó la opción: '''))
                 print("Mascota eliminada del sistema con exito")
             else:
                 print("No se ha podido eliminar la mascota")
+                print("-" * 50)
         
         elif menu == 6:
             try:
@@ -235,12 +249,22 @@ Usted ingresó la opción: '''))
                 print("Medicamento eliminado" if resultado else "No se encontró el medicamento o la mascota")
             except:
                 print("Error al eliminar el medicamento.")
+                print("-" * 50)
         elif menu == 7:
-            print("Gracias por usar el sistema. ¡Hasta luego!")
+            print("Cerrando el programa")
+            time.sleep(0.3)
+            print("...")
+            time.sleep(0.3)
+            print("...")
+            time.sleep(0.3)
+            print("...")
+            time.sleep(0.3)
+            print("-" * 50)
             break
 
         else:
             print("Opción inválida. Intente nuevamente.")
+            print("-" * 50)
 
 if __name__ == '__main__':
     main()
