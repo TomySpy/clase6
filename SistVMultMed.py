@@ -227,11 +227,11 @@ Usted ingresó la opción: '''))
             else:
                 print("No se ha podido eliminar la mascota")
         
-            elif menu==6:
+        elif menu==6:
             print("Usted ha salido del sistema de servicio de hospitalización...")
             break
         
-            else:
+        else:
             print("Usted ingresó una opción no válida, intentelo nuevamente...")
 
 if __name__=='__main__':
