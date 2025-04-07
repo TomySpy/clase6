@@ -227,12 +227,25 @@ Usted ingresó la opción: '''))
             else:
                 print("No se ha podido eliminar la mascota")
         
-        elif menu==6:
-            print("Usted ha salido del sistema de servicio de hospitalización...")
+        elif menu == 6:
+            try:
+                historia = int(input("Ingrese la historia clínica: "))
+                nombre_medicamento = input("Nombre del medicamento a eliminar: ").strip()
+                resultado = servicio_hospitalario.eliminarMedicamentoMascota(historia, nombre_medicamento)
+                print("Medicamento eliminado" if resultado else "No se encontró el medicamento o la mascota")
+            except:
+                print("Error al eliminar el medicamento.")
+        elif menu == 7:
+            print("Gracias por usar el sistema. ¡Hasta luego!")
             break
-        
+
         else:
-            print("Usted ingresó una opción no válida, intentelo nuevamente...")
+            print("Opción inválida. Intente nuevamente.")
+
+if __name__ == '__main__':
+    main()
+        
+        
 
 if __name__=='__main__':
     main()
